@@ -1,5 +1,5 @@
 
-I choose track 1 to work on for my Alien Invasion project. and I choose Dynamic ship mechanics.
+I chose track 1 to work on for my Alien Invasion project,focusing on Dynamic ship mechanics.
 Ship formation:-
     postion : left move forward to right
     movement : move up an down forward motion
