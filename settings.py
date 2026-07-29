@@ -3,7 +3,7 @@
     Purpose: setting class of the game
     Date: 7/29/2026
 """
-
+from pathlib import Path
 class Settings:
     def __init__(self):
         #Intialize the game's settings.
@@ -11,6 +11,8 @@ class Settings:
         self.screen_height = 500
         self.bg_color=(15,15,25)
         # ship settings
+        self.base_bath = Path(__file__).parent
+        self.ship_image = self.base_bath/'image'/'ship.bmp'
         self.ship_speed =1.5
         # Bullet settings
         self.bullet_speed =2.0

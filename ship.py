@@ -11,7 +11,7 @@ class Ship:
         self.screen_rect=ai_game.screen.get_rect()
         self.settings =ai_game.settings
         # load the image of the ship
-        self.image = pygame.image.load('image/ship.bmp')
+        self.image = pygame.image.load(self.settings.ship_image)
         self.image =pygame.transform.rotate(self.image,-90)
         #position ship in left side
         self.rect=self.image.get_rect()
