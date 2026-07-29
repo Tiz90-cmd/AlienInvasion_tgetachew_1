@@ -5,6 +5,7 @@ from ship import Ship
 from bullet import Bullet
 class AlienInvasion:
     def __init__(self):
+        # Intialize the game, and create game resource
         pygame.init()
         self.settings=Settings()
         self.screen=pygame.display.set_mode((650,500))
@@ -16,13 +17,20 @@ class AlienInvasion:
         self.clock=pygame.time.Clock()
         self.bg_color=(15,15,25)
     def run_game(self):
+        # statr the main loop of the game.
         while True:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            #get rid off of bullets that have fired.
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <=0:
+                    self.bullets.remove(bullet)
+            print(len(self.bullets))
             self._update_screen()
             self.clock.tick(90)
     def _check_events(self):
+        #keypresess and mouse events.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -33,6 +41,7 @@ class AlienInvasion:
                  self._check_keyup_events(event)
 
     def _check_keydown_events(self,event):
+        # keypressed 
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right =True
         elif event.key ==pygame.K_LEFT:
@@ -47,6 +56,7 @@ class AlienInvasion:
             pygame.quit()
             sys.exit()
     def _check_keyup_events(self,event):
+       # key releases
        if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
        elif event.key == pygame.K_LEFT:
@@ -56,10 +66,12 @@ class AlienInvasion:
        elif event.key == pygame.K_DOWN:
              self.ship.moving_down =False
     def _fire_bullet(self):
+        # Firing the bulllets.
         new_bullet = Bullet(self)
         self.bullets.add(new_bullet)
             
     def _update_screen(self):
+        #Update image on the screen, and flip to new screen.
         self.screen.fill(self.settings.bg_color)
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
