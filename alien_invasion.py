@@ -14,7 +14,7 @@ class AlienInvasion:
         self.ship=Ship(self)
         self.bullets =pygame.sprite.Group()
         self.clock=pygame.time.Clock()
-        self.bg_color=(230,230,230)
+        self.bg_color=(15,15,25)
     def run_game(self):
         while True:
             self._check_events()
