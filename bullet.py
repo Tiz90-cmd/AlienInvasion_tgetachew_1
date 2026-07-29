@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game 
     Name:Tizita Getachew
     Purpose: Bullet class of Alien_Inavsion game
-    Date: 7/129/2026
+    Date: 7/29/2026
 """
 
 import pygame
