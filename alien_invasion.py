@@ -1,3 +1,8 @@
+""" program: Alien_Invasion game
+    Name:Tizita Getachew
+    Purpose: The main function of the game
+    Date: 7/129/2026
+"""
 import sys
 import pygame
 from settings import Settings
@@ -5,7 +10,7 @@ from ship import Ship
 from bullet import Bullet
 class AlienInvasion:
     def __init__(self):
-        # Intialize the game, and create game resource
+        # Intialize the game, and create game's resources
         pygame.init()
         self.settings=Settings()
         self.screen=pygame.display.set_mode((650,500))
@@ -17,14 +22,14 @@ class AlienInvasion:
         self.clock=pygame.time.Clock()
         self.bg_color=(15,15,25)
     def run_game(self):
-        # statr the main loop of the game.
+        # start the main loop of the game.
         while True:
             self._check_events()
             self.ship.update()
             self.bullets.update()
             self._update_bullets()
             self._update_screen()
-            self.clock.tick(90)
+            self.clock.tick(60)
     def _check_events(self):
         #keypresess and mouse events.
         for event in pygame.event.get():
@@ -37,7 +42,7 @@ class AlienInvasion:
                  self._check_keyup_events(event)
 
     def _check_keydown_events(self,event):
-        # keypressed 
+        # keypresses. 
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right =True
         elif event.key ==pygame.K_LEFT:
@@ -46,13 +51,15 @@ class AlienInvasion:
              self.ship.moving_up =True
         elif event.key ==pygame.K_DOWN:
              self.ship.moving_down = True
+        #  Space keypress for firing.
         elif event.key == pygame.K_SPACE:
              self._fire_bullet()
+        #
         elif event.key == pygame.K_q:
             pygame.quit()
             sys.exit()
     def _check_keyup_events(self,event):
-       # key releases
+       # key releases.
        if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
        elif event.key == pygame.K_LEFT:

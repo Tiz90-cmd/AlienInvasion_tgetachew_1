@@ -1,3 +1,9 @@
+""" program: Alien_Invasion game
+    Name:Tizita Getachew
+    Purpose: setting class of the game
+    Date: 7/129/2026
+"""
+
 class Settings:
     def __init__(self):
         #Intialize the game's settings.

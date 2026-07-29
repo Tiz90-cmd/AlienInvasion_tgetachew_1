@@ -1,3 +1,8 @@
+""" program: Alien_Invasion game
+    Name:Tizita Getachew
+    Purpose: Ship class of the game
+    Date: 7/129/2026
+"""
 import pygame
 class Ship:
     def __init__(self,ai_game):
@@ -27,9 +32,9 @@ class Ship:
        # Manual movement
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
-        
         if self.moving_left and self.rect.left> 0:
             self.x -= self.settings.ship_speed
+       # Moving the ship up and dowm ward
         if self.moving_up and self.rect.top > 0 :
             self.rect.y -= self.settings.ship_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom :
