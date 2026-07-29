@@ -22,11 +22,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
-            #get rid off of bullets that have fired.
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <=0:
-                    self.bullets.remove(bullet)
-            print(len(self.bullets))
+            self._update_bullets()
             self._update_screen()
             self.clock.tick(90)
     def _check_events(self):
@@ -66,10 +62,17 @@ class AlienInvasion:
        elif event.key == pygame.K_DOWN:
              self.ship.moving_down =False
     def _fire_bullet(self):
-        # Firing the bulllets.
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
-            
+        # create a bullet and add it to the bullet group.
+        if len(self.bullets)< self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+    def _update_bullets(self):
+        self.bullets.update()
+        #get rid off of bullets that have fired.
+        for bullet in self.bullets.copy():
+            if bullet.rect.right >= self.screen.get_rect().right:
+                self.bullets.remove(bullet)
+           
     def _update_screen(self):
         #Update image on the screen, and flip to new screen.
         self.screen.fill(self.settings.bg_color)
