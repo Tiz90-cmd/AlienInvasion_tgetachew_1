@@ -19,7 +19,7 @@ class Bullet(Sprite):
         self.rect.midleft = ai_game.ship.rect.midright
         self.x =float(self.rect.x)
     def update(self):
-        #Update the ecact position of the bullet
+        #Update the exact position of the bullet.
         self.x += self.settings.bullet_speed
         self.rect.x =self.x
     def draw_bullet(self):
