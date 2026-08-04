@@ -8,11 +8,12 @@ class Alien(Sprite):
      self.settings = ai_game.settings
      
      self.image = pygame.image.load(self.settings.alien_image)
-     self.image = pygame.transform.rotate(image,-90)
+     self.image = pygame.transform.rotate(self.image,-90)
+     self.image = pygame.transform.scale(self.image,(30,30))
      
-     self.settings.alien_surface = image
+     #self.settings.alien_surface = self.image
 
-     self.image =self.settings.alien_surface
+     #self.image =self.settings.alien_surface
      self.rect = self.image.get_rect()
      
      self.x= float(self.rect.x)
