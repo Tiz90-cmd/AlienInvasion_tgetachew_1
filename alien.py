@@ -18,3 +18,9 @@ class Alien(Sprite):
      
      self.x= float(self.rect.x)
      self.y = float(self.rect.y)
+   def update(self):
+    self.y+= self.settings.alien_speed * self.settings.fleet_direction
+    self.rect.y =self.y
+   def check_edges(self):
+      screen_rect =self.screen.get_rect()
+      return self.rect.left <=0 or self.rect.right >= screen_rect.right
