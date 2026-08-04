@@ -6,9 +6,14 @@ class Alien(Sprite):
      super().__init__()
      self.screen = ai_game.screen
      self.settings = ai_game.settings
-     self.image = pygame.image.load(self.settings.alien_image)
+     if not hasattr (self.settings,"alien_surface"):
+        image = pygame.image.load(self.settings.alien_image)
+        image = pygame.transform.rotate(image,-90)
+        image =pygame.transform.scale(image,(35,35))
+        self.settings.alien_surface = image
+
+     self.image =self.settings.alien_surface
      self.rect = self.image.get_rect()
-     self.rect.x =self.settings.screen_width - self.rect.width
-     self.rect.y = random.randint(50,self.settings.screen_height - 50)
+     
      self.x= float(self.rect.x)
      self.y = float(self.rect.y)

@@ -26,9 +26,9 @@ class Ship:
         self.moving_down=False
     def update(self):
         #Automatic movemnt forward util center
-        center_limit = self.screen_rect.centerx
-        if self.rect.x < center_limit:
-            self.x += 0.5
+       # center_limit = self.screen_rect.centerx
+        ##if self.rect.x < 
+            #self.x += 0.5
        # Manual movement
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
