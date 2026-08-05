@@ -15,6 +15,7 @@ class Settings:
         self.ship_image = self.base_bath/'image'/'ship.bmp'
         self.ship_speed =1.5
         self.alien_image = self.base_bath/'image'/'alien.bmp'
+        self.ship_limit = 3
         # Bullet settings
         self.bullet_speed =3
         self.bullet_width = 90

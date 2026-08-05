@@ -45,3 +45,6 @@ class Ship:
 
     def blitme(self):
         self.screen.blit(self.image,self.rect)
+    def center_ship(self):
+        self.rect.midleft = self.screen_rect.midleft
+        self.x = float(self.rect.x)
