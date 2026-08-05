@@ -14,15 +14,15 @@ class Settings:
         self.base_bath = Path(__file__).parent
         self.ship_image = self.base_bath/'image'/'ship.bmp'
         self.ship_speed =1.5
-        self.alien_image = self.base_bath/'image'/'alien.bmp'
-        self.ship_limit = 3
+        #self.alien_image = self.base_bath/'image'/'alien.bmp'
+        self.ship_limit = 4
         # Bullet settings
-        self.bullet_speed =3
-        self.bullet_width = 35
-        self.bullet_height = 43
+        self.bullet_speed =1
+        self.bullet_width = 8
+        self.bullet_height = 99
         self.bullet_color = (0,255,0)
         self.bullet_allowed = 4
         #Alien settings
-        self.alien_speed =2
-        self.fleet_drop_speed = 6
-        self.fleet_direction = -1
+        self.alien_image = self.base_bath/'image'/'alien.bmp'
+        self.alien_speed =1.5
+       

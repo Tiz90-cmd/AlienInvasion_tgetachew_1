@@ -25,10 +25,7 @@ class Ship:
         self.moving_up=False
         self.moving_down=False
     def update(self):
-        #Automatic movemnt forward util center
-       # center_limit = self.screen_rect.centerx
-        ##if self.rect.x < 
-            #self.x += 0.5
+        
        # Manual movement
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
@@ -41,7 +38,7 @@ class Ship:
            self.rect.y += self.settings.ship_speed
         # Update rect object from self.x.    
         self.rect.x =self.x
-
+        self.rect.centery = self.screen_rect.centery
 
     def blitme(self):
         self.screen.blit(self.image,self.rect)

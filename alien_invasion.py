@@ -92,24 +92,23 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
         self._check_bullet_alien_collisions()
     def _check_bullet_alien_collisions(self):
+        
         collisions = pygame.sprite.groupcollide(self.bullets,self.aliens,True,True)
         if not self.aliens: 
              self.bullets.empty()
              self._create_fleet()
 
     def _update_aliens(self):
-         self._check_fleet_edges()
          self.aliens.update()
-         #self._check_fleet_edges()
+         for alien in self.aliens.copy():
+             if alien.rect.right <0:
+                self.aliens.remove(alien)
+             if not self.aliens:
+                  self._create_fleet()
+         
          if pygame.sprite.spritecollideany(self.ship,self.aliens):
              self._ship_hit()
-             return
-             #self._check_aliens_midleft()
-         for alien in self.aliens.sprites( ):
-             if alien.rect.left <= self.ship.rect.right:
-                 self._ship_hit()
-                 break
-
+             
 
     def _update_screen(self):
         #Update image on the screen, and flip to new screen.
@@ -120,43 +119,36 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
         pygame.display.flip()
     def _create_fleet(self):
+        
         alien = Alien(self)
         alien_width,alien_height =alien.rect.size
-        current_x = self.settings.screen_width - alien_width*2
+
+        
+        current_x = self.settings.screen_width - alien_width* 2
         current_y = alien_height 
 
-        x_spacing =alien_width *3
-        y_spacing =alien_height*2
+        x_spacing =alien_width *2.5
+        y_spacing =alien_height* 2
         
         
         while current_y < (self.settings.screen_height - alien_height * 1.5):
-            while current_x > alien_width: #self.settings.screen_width* 0.35
+            while current_x  >  self.settings.screen_width * 0.30:
                          
                 self._create_alien (current_x,current_y)
-                current_x -= x_spacing     #alien_width * 2
+                current_x -= x_spacing     
             current_x = self.settings.screen_width - alien_width*2
-            current_y += y_spacing    #alien_height * 2
+            current_y += y_spacing    
+
 
     def _create_alien(self,current_x,current_y):
     
         new_alien =Alien(self)
-        new_alien.rect.x = current_x
-        new_alien.rect.y = current_y
-        new_alien.x = float(new_alien.rect.x)
-        new_alien.y = float (new_alien.rect.y)
+        new_alien.rect.x=current_x
+        new_alien.rect.y =current_y
+        new_alien.x =float(new_alien.rect.x)
+        new_alien.y =float(new_alien.rect.y)
         self.aliens.add(new_alien)
-    def _check_fleet_edges(self):
-        for alien in self.aliens.sprites():
-            if alien.check_edges():     #rect.right >= self.screen.get_rect().right
-                self._change_fleet_direction()
-                break
-                #self.aliens.remove(alien)
-            
-    def _change_fleet_direction(self):
-        for alien in self.aliens.sprites():
-            alien.rect.y += self.settings.fleet_drop_speed
-            alien.y = float(alien.rect.y)
-        self.settings.fleet_direction *= -1
+    
     def _ship_hit(self):
       if self.stats.ships_left > 0:
         self.stats.ships_left -= 1
