@@ -18,8 +18,8 @@ class Settings:
         self.ship_limit = 3
         # Bullet settings
         self.bullet_speed =3
-        self.bullet_width = 90
-        self.bullet_height = 500
+        self.bullet_width = 35
+        self.bullet_height = 43
         self.bullet_color = (0,255,0)
         self.bullet_allowed = 4
         #Alien settings
