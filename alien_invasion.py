@@ -88,7 +88,7 @@ class AlienInvasion:
         pygame.sprite.groupcollide(self.bullets,self.aliens,True,True) 
     def _update_aliens(self):
          self.aliens.update()
-         self._check_fleet_edges(self)
+         self._check_fleet_edges()
 
     def _update_screen(self):
         #Update image on the screen, and flip to new screen.
@@ -105,18 +105,20 @@ class AlienInvasion:
         current_y = alien_height 
         
         while current_y < (self.settings.screen_height - alien_height * 1.5):
-             while current_x > self.settings.screen_width* 0.35:
-                              
+            while current_x > self.settings.screen_width* 0.35:
+                         
                 self._create_alien (current_x,current_y)
-                current_x -= alien_width * 2
-             current_x = self.settings.screen_width - alien_width*2
-             current_y += alien_height * 1.8
+                current_x -= alien_width * 1.8
+            current_x = self.settings.screen_width - alien_width*2
+            current_y += alien_height * 1.8
 
     def _create_alien(self,current_x,current_y):
-        self._check_fleet_edges()
+    
         new_alien =Alien(self)
         new_alien.rect.x = current_x
         new_alien.rect.y = current_y
+        new_alien.x = float(new_alien.rect.x)
+        new_alien.y = float (new_alien.rect.y)
         self.aliens.add(new_alien)
     def _check_fleet_edges(self):
         for alien in self.aliens.sprites():
