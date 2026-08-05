@@ -16,12 +16,12 @@ class Settings:
         self.ship_speed =1.5
         self.alien_image = self.base_bath/'image'/'alien.bmp'
         # Bullet settings
-        self.bullet_speed =2.0
-        self.bullet_width = 15
-        self.bullet_height = 80
+        self.bullet_speed =3
+        self.bullet_width = 90
+        self.bullet_height = 500
         self.bullet_color = (0,255,0)
         self.bullet_allowed = 4
         #Alien settings
-        self.alien_speed =1.0
-        self.fleet_drop_speed =8
+        self.alien_speed =2
+        self.fleet_drop_speed = 6
         self.fleet_direction = -1
