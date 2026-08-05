@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: setting class of the game
-    Date: 7/29/2026
+    Date: 8/05/2026
 """
 from pathlib import Path
 class Settings:

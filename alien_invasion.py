@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: The main function of the game
-    Date: 7/29/2026
+    Date: 08/05/2026
 """
 import sys
 import pygame
@@ -92,9 +92,10 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
         self._check_bullet_alien_collisions()
     def _check_bullet_alien_collisions(self):
-        
+        # Remove any bullets and aliens that have collied
         collisions = pygame.sprite.groupcollide(self.bullets,self.aliens,True,True)
         if not self.aliens: 
+            #Destroy exisiting bullet and create a new fleet.
              self.bullets.empty()
              self._create_fleet()
 
@@ -103,9 +104,9 @@ class AlienInvasion:
          for alien in self.aliens.copy():
              if alien.rect.right <0:
                 self.aliens.remove(alien)
-             if not self.aliens:
+         if not self.aliens and self.game_active:
                   self._create_fleet()
-         
+         # Check the collision between ship and alien
          if pygame.sprite.spritecollideany(self.ship,self.aliens):
              self._ship_hit()
              
@@ -119,18 +120,18 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
         pygame.display.flip()
     def _create_fleet(self):
-        
+        """ create a full fleet and calculating space based on the size 
+        of the alien and screen dimensions.
+        """
         alien = Alien(self)
         alien_width,alien_height =alien.rect.size
 
-        
         current_x = self.settings.screen_width - alien_width* 2
         current_y = alien_height 
 
         x_spacing =alien_width *2.5
         y_spacing =alien_height* 2
-        
-        
+        # create alien based on avilable screen dimension and alien size.
         while current_y < (self.settings.screen_height - alien_height * 1.5):
             while current_x  >  self.settings.screen_width * 0.30:
                          
@@ -141,19 +142,23 @@ class AlienInvasion:
 
 
     def _create_alien(self,current_x,current_y):
-    
+    # Create aline in the position of (x,y).
         new_alien =Alien(self)
         new_alien.rect.x=current_x
         new_alien.rect.y =current_y
+        new_alien.x =float(current_x)
         new_alien.x =float(new_alien.rect.x)
         new_alien.y =float(new_alien.rect.y)
         self.aliens.add(new_alien)
     
     def _ship_hit(self):
+      # ship respond when hit by ann aliens.
       if self.stats.ships_left > 0:
         self.stats.ships_left -= 1
+        #Get rid of any remaing bullet and aliens
         self.bullets.empty()
         self.aliens.empty()
+        # create a new fleet and pause.
         self._create_fleet()
         self.ship.center_ship()
         sleep(0.5)

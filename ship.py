@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: Ship class of the game
-    Date: 7/29/2026
+    Date: 08/05/2026
 """
 import pygame
 class Ship:
@@ -38,10 +38,10 @@ class Ship:
            self.rect.y += self.settings.ship_speed
         # Update rect object from self.x.    
         self.rect.x =self.x
-        self.rect.centery = self.screen_rect.centery
-
+        
     def blitme(self):
         self.screen.blit(self.image,self.rect)
     def center_ship(self):
+        #Positioning the ship on midleft position
         self.rect.midleft = self.screen_rect.midleft
         self.x = float(self.rect.x)
