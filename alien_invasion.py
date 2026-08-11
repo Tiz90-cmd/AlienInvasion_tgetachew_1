@@ -10,6 +10,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
+from button import Button
 from time import sleep
 class AlienInvasion:
     def __init__(self):
@@ -22,7 +23,8 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         self.stats = GameStats(self)
         self.ship=Ship(self)
-        self.game_active =True
+        self.game_active =False
+        self.play_button = Button(self,"play")
         self.bullets =pygame.sprite.Group()
         self.aliens =pygame.sprite.Group()
         self._create_fleet()
@@ -118,6 +120,9 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+        #Draw the play button if the game is inactive.
+        if not self.game_active:
+            self.play_button.draw_button
         pygame.display.flip()
     def _create_fleet(self):
         """ create a full fleet and calculating space based on the size 
