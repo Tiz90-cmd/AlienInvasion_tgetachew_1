@@ -15,7 +15,7 @@ class Settings:
         self.ship_image = self.base_bath/'image'/'ship.bmp'
         self.ship_speed =2
         #self.alien_image = self.base_bath/'image'/'alien.bmp'
-        self.ship_limit = 4
+        self.ship_limit = 3
         # Bullet settings
         self.bullet_speed =1
         self.bullet_width = 8
@@ -26,7 +26,7 @@ class Settings:
         self.alien_image = self.base_bath/'image'/'alien.bmp'
         self.alien_speed =1.5
         #How quickly the game speed up
-        self.speedup_scale =1.1
+        self.speedup_scale = 1.1
         # How quickly the alien point values increase
         self.score_scale = 1.5
         self.initialize_dynamic_settings()
