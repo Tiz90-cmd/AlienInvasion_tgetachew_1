@@ -115,7 +115,7 @@ class AlienInvasion:
              self._create_fleet()
              self.settings.increase_speed()
             # Increase level.
-             self.stats.leveln += 1
+             self.stats.level += 1
              self.sb.prep_level()
 
     def _update_aliens(self):
@@ -178,7 +178,9 @@ class AlienInvasion:
     def _ship_hit(self):
       # ship respond when hit by ann aliens.
       if self.stats.ships_left > 0:
+        # Decrement ships_left , and update scoreboard.
         self.stats.ships_left -= 1
+        self.sb.prep_ships()
         #Get rid of any remaing bullet and aliens
         self.bullets.empty()
         self.aliens.empty()
@@ -198,6 +200,7 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.sb.prep_score()
             self.sb.prep_level()
+            self.sb.prep_ships()
             self.game_active =True
         # Get rid of any remaining bullets and aliens:
             self.bullets.empty()
