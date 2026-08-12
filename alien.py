@@ -1,3 +1,9 @@
+""" program: Alien_Invasion game
+    Name:Tizita Getachew
+    Purpose: Alien class of the game
+    Date: 8/12/2026
+"""
+
 import pygame 
 import random
 from pygame.sprite import Sprite

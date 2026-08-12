@@ -1,3 +1,9 @@
+""" program: Alien_Invasion game
+    Name:Tizita Getachew
+    Purpose: Scorebord class of the game
+    Date: 8/12/2026
+"""
+
 import pygame.font
 from pygame.sprite import Group
 from ship import Ship

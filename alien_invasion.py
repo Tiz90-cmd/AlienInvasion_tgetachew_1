@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: The main function of the game
-    Date: 08/05/2026
+    Date: 08/12/2026
 """
 import sys
 import pygame
@@ -100,9 +100,10 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.right >= self.screen.get_rect().right:
                 self.bullets.remove(bullet)
-        #self._check_bullet_alien_collisions()
+        self._check_bullet_alien_collisions()
     def _check_bullet_alien_collisions(self):
-        # Remove any bullets and aliens that have collied
+        """ Respond to bullet-alien collisions by updating scores and
+        remove any bullets and aliens that have collied"""
         collisions = pygame.sprite.groupcollide(self.bullets,self.aliens,True,True)
         if collisions:
          for aliens in collisions.values():
@@ -123,9 +124,7 @@ class AlienInvasion:
          for alien in self.aliens.copy():
              if alien.rect.right <0:
                 self.aliens.remove(alien)
-         if not self.aliens and self.game_active:
-                  self._create_fleet()
-         # Check the collision between ship and alien
+        # Check the collision between ship and alien
          if pygame.sprite.spritecollideany(self.ship,self.aliens):
              self._ship_hit()
              
@@ -166,7 +165,7 @@ class AlienInvasion:
 
 
     def _create_alien(self,current_x,current_y):
-    # Create aline in the position of (x,y).
+    # Create aline in the position of (x,y) adn add it to the  fleet.
         new_alien =Alien(self)
         new_alien.rect.x=current_x
         new_alien.rect.y =current_y
@@ -176,7 +175,7 @@ class AlienInvasion:
         self.aliens.add(new_alien)
     
     def _ship_hit(self):
-      # ship respond when hit by ann aliens.
+      # ship respond when hit by an aliens by reducsing the number of left ships.
       if self.stats.ships_left > 0:
         # Decrement ships_left , and update scoreboard.
         self.stats.ships_left -= 1
@@ -192,7 +191,7 @@ class AlienInvasion:
          self.game_active =False
          pygame.mouse.set_visible(True)
     def _check_play_button(self,mouse_pos):
-        """Start a new game when the player clicks plays"""
+        """Start a new game when the player clicks play button."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             self.settings.initialize_dynamic_settings()
@@ -200,7 +199,6 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.sb.prep_score()
             self.sb.prep_level()
-            self.stats.level=1
             self.sb.prep_ships()
             self.game_active =True
         # Get rid of any remaining bullets and aliens:

@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: Ship class of the game
-    Date: 08/05/2026
+    Date: 08/12/2026
 """
 import pygame
 from pygame.sprite import Sprite

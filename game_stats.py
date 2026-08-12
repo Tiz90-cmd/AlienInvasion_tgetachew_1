@@ -1,7 +1,7 @@
 """ program: Alien_Invasion game
     Name:Tizita Getachew
     Purpose: GameStats class
-    Date: 08/05/2026
+    Date: 08/12/2026
 """
 class GameStats:
   """Track statistics for Alien Invastion ."""
