@@ -165,7 +165,7 @@ class AlienInvasion:
 
 
     def _create_alien(self,current_x,current_y):
-    # Create aline in the position of (x,y) adn add it to the  fleet.
+    # Create aline in the position of (x,y) and add it to the  fleet.
         new_alien =Alien(self)
         new_alien.rect.x=current_x
         new_alien.rect.y =current_y
@@ -175,7 +175,7 @@ class AlienInvasion:
         self.aliens.add(new_alien)
     
     def _ship_hit(self):
-      # ship respond when hit by an aliens by reducsing the number of left ships.
+      # ship respond when hit by an aliens by reducing the number of left ships.
       if self.stats.ships_left > 0:
         # Decrement ships_left , and update scoreboard.
         self.stats.ships_left -= 1
@@ -191,7 +191,7 @@ class AlienInvasion:
          self.game_active =False
          pygame.mouse.set_visible(True)
     def _check_play_button(self,mouse_pos):
-        """Start a new game when the player clicks play button."""
+        #Start a new game when the player clicks play button.
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             self.settings.initialize_dynamic_settings()

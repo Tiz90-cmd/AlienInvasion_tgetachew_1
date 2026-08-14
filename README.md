@@ -13,7 +13,7 @@ Compact rule:
   -Bullet hits alien - alien destroyed
    -Alien reaches or collied  with ship -ship destroyed /game over
 
-
+https://youtu.be/xFGgzkty-bE
 
 
 
